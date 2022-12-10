@@ -10,7 +10,7 @@ inputDescriptor1 = document.getElementById("descriptor1").value
 inputDescriptor2 = document.getElementById("descriptor2").value
 var block = 'block'
 var none = 'none'
-var savedGallery = document.querySelector(".saved-covers-section")
+var savedGallery = document.querySelector(".saved-view")
 
     
 
@@ -132,20 +132,15 @@ function viewSaved() {
 }
 
 function displaySavedCovers() {
-  // savedGallery.innerHTML = ''
   for (var i = 0; i < savedCovers.length; i++) {
-
-    console.log(savedCovers[i].cover)
-    console.log(savedCovers.length)
-
     savedGallery.innerHTML += `
-    <section class = "saved-covers-section">
-      <section class = "mini-cover">
-        <img class="mini-cover" src= ${savedCovers[i].cover} </img>
-        <h2 class="cover-title"> ${savedCovers[i].title} </h2>
-        <h3 class="tagline"> A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
+    <section class="saved-covers-section">
+    <section class="mini-cover">
+        <img class="mini-cover"src=${savedCovers[i].cover}>
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
       </section>
-    </section>
+      </section>
     `
   }
 }
