@@ -132,19 +132,21 @@ function viewSaved() {
 }
 
 function displaySavedCovers() {
-  console.log('eek')
   // savedGallery.innerHTML = ''
   for (var i = 0; i < savedCovers.length; i++) {
-    console.log('uhhhh')
-    savedGallery.innerHTML = `
-    <section>
-        <img class="mini-cover" src=${savedCovers[i].covers}
-        <h2 class="mini-cover">${savedCovers[i].title}</h2>
-        <h3 class="mini-cover">A tale of <span class=${savedCovers[i].descriptors} </span> and class=${savedCovers[i].descriptors}</span></h3>
+
+    console.log(savedCovers[i].cover)
+    console.log(savedCovers.length)
+
+    savedGallery.innerHTML += `
+    <section class = "saved-covers-section">
+      <section class = "mini-cover">
+        <img class="mini-cover" src= ${savedCovers[i].cover} </img>
+        <h2 class="cover-title"> ${savedCovers[i].title} </h2>
+        <h3 class="tagline"> A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
       </section>
     </section>
     `
-    saveCov()
   }
 }
 
