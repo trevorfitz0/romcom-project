@@ -31,9 +31,12 @@ var savedGallery = document.querySelector(".saved-covers-section")
 
 var deleteSavedCover = document.querySelector(".mini-cover")
 
+const hid = document.getElementsByClassName("view saved-view hidden")[0].classList
+
 // Event listeners 👇
 //__________________________________________________________________
 randomCover[0].addEventListener('click', newRandomCover)
+
 
 saveCover[0].addEventListener('click', saveCov)
 
@@ -109,31 +112,32 @@ function newRandomCover() {
 //__________________________________________________________________________________
 
 function homeView() {
-    view = 'home'
     hide()
+    view = 'home'
+    buttonCheck()
     document.getElementsByClassName("view home-view")[0].style.display = "block"
 }
 
 function viewForm() {
-    view = 'form'
     hide()
+    view = 'form'
+    buttonCheck()
     document.getElementsByClassName("view form-view hidden")[0].style.display = "block"
 }
 
 function viewSaved() {
-    view = 'saved'
     hide()
+    view = 'saved'
+    buttonCheck()
     displaySavedCovers()
-    document.getElementsByClassName("view saved-view hidden")[0].style.display = "block"
-    document.getElementsByClassName("saved-covers-section")[0].style.display = "block"
-  
+    document.getElementsByClassName("view saved-view hidden")[0].classList.remove("hidden")
 }
 
 function displaySavedCovers() {
   savedGallery.innerHTML = ' '
   for (var i = 0; i < savedCovers.length; i++) {
     savedGallery.innerHTML += `
-    <section class = "saved-covers-section${savedCovers[i].id}">
+    <section class = "saved-covers-section" id = "${savedCovers[i].id}" ">
       <section class = "mini-cover">
         <img class="mini-cover" src= ${savedCovers[i].cover} </img>
         <h2 class="cover-title"> ${savedCovers[i].title} </h2>
@@ -151,59 +155,50 @@ function displaySavedCovers() {
 function deleteCover(e) {
   var parent = e.currentTarget.parentElement
   var target = e.currentTarget
-  parent.removeChild(e.currentTarget)
+  parent.removeChild(target)
   for (var i = 0; i < savedCovers.length; i++) {
-    if (savedCovers[i].id)
-   savedCovers.splice(i, 1)
+    var check1 = target.id + ""
+    var check2 = savedCovers[i].id + ""
+    console.log(check1)
+    console.log(check2)
+    console.log('_____________')
+    if (check1 === check2) {
+    savedCovers.splice(i,1)
+    }
   }
 }
 
 
 function hide() {
-  buttonCheck()
+
+  if(view === 'saved') {
+    hid.add("hidden")
+  }
+
   document.getElementsByClassName("view home-view")[0].style.display = "none"
-  document.getElementsByClassName("view saved-view hidden")[0].style.display = "none"
   document.getElementsByClassName("view form-view hidden")[0].style.display = "none"
+
 }
 //__________________________________________________________________________________
 
 function buttonCheck() {
-  
-    var homeHide = document.getElementsByClassName("home-button hidden")[0].classList.contains("hidden");
-    var randomHide = document.getElementsByClassName("random-cover-button")[0].classList.contains("hidden");
-    var saveHide = document.getElementsByClassName("save-cover-button")[0].classList.contains("hidden");
-    var viewHide = document.getElementsByClassName("view-saved-button")[0].classList.contains("hidden");
-    var makeHide = document.getElementsByClassName("make-new-button")[0].classList.contains("hidden");
-
-    if(homeHide === true){
-      document.getElementsByClassName("home-button hidden")[0].style.display = "none"
-    }
-    if(randomHide === true){
-      document.getElementsByClassName("random-cover-button")[0].style.display = "block"
-    }
-    if(saveHide === true){
-      document.getElementsByClassName("save-cover-button")[0].style.display = "block"
-    }
-    if(viewHide === true){
-      document.getElementsByClassName("view-saved-button")[0].style.display = "block"
-    }
-    if(makeHide === true){
-      document.getElementsByClassName("make-new-button")[0].style.display = "block"
-    }
-
-
   if(view === 'home') {
+    document.getElementsByClassName("home-button hidden")[0].style.display = "none"
     document.getElementsByClassName("random-cover-button")[0].style.display = "block"
     document.getElementsByClassName("save-cover-button")[0].style.display = "block"
     document.getElementsByClassName("view-saved-button")[0].style.display = "block"
     document.getElementsByClassName("make-new-button")[0].style.display = "block"
   } else if(view === 'saved') {
     document.getElementsByClassName("home-button hidden")[0].style.display = "block"
+    document.getElementsByClassName("random-cover-button")[0].style.display = "none"
+    document.getElementsByClassName("save-cover-button")[0].style.display = "none"
+    document.getElementsByClassName("view-saved-button")[0].style.display = "none"
     document.getElementsByClassName("make-new-button")[0].style.display = "block"
   } else if(view === 'form') {
     document.getElementsByClassName("home-button hidden")[0].style.display = "block"
+    document.getElementsByClassName("random-cover-button")[0].style.display = "none"
     document.getElementsByClassName("save-cover-button")[0].style.display = "block"
     document.getElementsByClassName("view-saved-button")[0].style.display = "block"
-
+    document.getElementsByClassName("make-new-button")[0].style.display = "none"
   }
 }
