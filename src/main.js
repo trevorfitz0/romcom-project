@@ -130,7 +130,7 @@ function viewSaved() {
 }
 
 function displaySavedCovers() {
-  savedGallery.innerHTML = ''
+  savedGallery.innerHTML = ' '
   for (var i = 0; i < savedCovers.length; i++) {
     savedGallery.innerHTML += `
     <section class = "saved-covers-section${savedCovers[i].id}">
@@ -151,7 +151,7 @@ function displaySavedCovers() {
 function deleteCover(e) {
   var parent = e.currentTarget.parentElement
   var target = e.currentTarget
-  parent.removeChild(target)
+  parent.removeChild(e.currentTarget)
   for (var i = 0; i < savedCovers.length; i++) {
     if (savedCovers[i].id)
    savedCovers.splice(i, 1)
@@ -168,23 +168,42 @@ function hide() {
 //__________________________________________________________________________________
 
 function buttonCheck() {
+  
+    var homeHide = document.getElementsByClassName("home-button hidden")[0].classList.contains("hidden");
+    var randomHide = document.getElementsByClassName("random-cover-button")[0].classList.contains("hidden");
+    var saveHide = document.getElementsByClassName("save-cover-button")[0].classList.contains("hidden");
+    var viewHide = document.getElementsByClassName("view-saved-button")[0].classList.contains("hidden");
+    var makeHide = document.getElementsByClassName("make-new-button")[0].classList.contains("hidden");
+
+    if(homeHide === true){
+      document.getElementsByClassName("home-button hidden")[0].style.display = "none"
+    }
+    if(randomHide === true){
+      document.getElementsByClassName("random-cover-button")[0].style.display = "block"
+    }
+    if(saveHide === true){
+      document.getElementsByClassName("save-cover-button")[0].style.display = "block"
+    }
+    if(viewHide === true){
+      document.getElementsByClassName("view-saved-button")[0].style.display = "block"
+    }
+    if(makeHide === true){
+      document.getElementsByClassName("make-new-button")[0].style.display = "block"
+    }
+
+
   if(view === 'home') {
-    document.getElementsByClassName("home-button hidden")[0].style.display = "none"
     document.getElementsByClassName("random-cover-button")[0].style.display = "block"
     document.getElementsByClassName("save-cover-button")[0].style.display = "block"
     document.getElementsByClassName("view-saved-button")[0].style.display = "block"
     document.getElementsByClassName("make-new-button")[0].style.display = "block"
   } else if(view === 'saved') {
     document.getElementsByClassName("home-button hidden")[0].style.display = "block"
-    document.getElementsByClassName("random-cover-button")[0].style.display = "none"
-    document.getElementsByClassName("save-cover-button")[0].style.display = "none"
-    document.getElementsByClassName("view-saved-button")[0].style.display = "none"
     document.getElementsByClassName("make-new-button")[0].style.display = "block"
   } else if(view === 'form') {
     document.getElementsByClassName("home-button hidden")[0].style.display = "block"
-    document.getElementsByClassName("random-cover-button")[0].style.display = "none"
     document.getElementsByClassName("save-cover-button")[0].style.display = "block"
     document.getElementsByClassName("view-saved-button")[0].style.display = "block"
-    document.getElementsByClassName("make-new-button")[0].style.display = "none"
+
   }
 }
