@@ -16,7 +16,7 @@ We added dynamic functionality to an app that that allows the user to view rando
 - We were given 5 days to work on this project and we are both in our second week of the front end program at Turing. 
 
 ### Contributors:
-- [Trevor Fitzgerald](https://github.com/trevorfitz0) 
+- [Trevor Fitzgerald](https://github.com/trevorfitz0)
 - [Lauren Seward](https://github.com/LSeward0421)
 
 ### Learning Goals:
@@ -28,6 +28,9 @@ We added dynamic functionality to an app that that allows the user to view rando
 - Wins:
     - Getting the "Saved Covers Section" to work with the selected covers
     - Seeing the dynamic nature of the form in the "Make Your Own Cover" section
+    - Understanding and resolving merge conflicts collaboratively
 - Challenges:
-    - Knowing when to work together or seperately whilst not jeapordizing the learning goals
+    - Identifying when it was more productive to work together versus seperately whilst not jeapordizing the learning goals
+    - Troubleshooting the git workflow and catching bugs before a push. Slowing down and constant communication with each other helped resolve these issues. 
+    - Refactoring to dryer JS without breaking the app
     
