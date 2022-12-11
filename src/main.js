@@ -158,9 +158,6 @@ function deleteCover(e) {
   for (var i = 0; i < savedCovers.length; i++) {
     var check1 = target.id + ""
     var check2 = savedCovers[i].id + ""
-    console.log(check1)
-    console.log(check2)
-    console.log('_____________')
     if (check1 === check2) {
     savedCovers.splice(i,1)
     }
