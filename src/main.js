@@ -133,7 +133,7 @@ function displaySavedCovers() {
   savedGallery.innerHTML = ''
   for (var i = 0; i < savedCovers.length; i++) {
     savedGallery.innerHTML += `
-    <section class = "saved-covers-section${currentCover.id}">
+    <section class = "saved-covers-section${savedCovers[i].id}">
       <section class = "mini-cover">
         <img class="mini-cover" src= ${savedCovers[i].cover} </img>
         <h2 class="cover-title"> ${savedCovers[i].title} </h2>
@@ -153,7 +153,7 @@ function deleteCover(e) {
   var target = e.currentTarget
   parent.removeChild(target)
   for (var i = 0; i < savedCovers.length; i++) {
-    if (savedCovers[i] === target.miniCovers)
+    if (savedCovers[i].id)
    savedCovers.splice(i, 1)
   }
 }
