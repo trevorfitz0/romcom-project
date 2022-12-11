@@ -37,7 +37,6 @@ const hid = document.getElementsByClassName("view saved-view hidden")[0].classLi
 //__________________________________________________________________
 randomCover[0].addEventListener('click', newRandomCover)
 
-
 saveCover[0].addEventListener('click', saveCov)
 
 
@@ -137,7 +136,7 @@ function displaySavedCovers() {
   savedGallery.innerHTML = ' '
   for (var i = 0; i < savedCovers.length; i++) {
     savedGallery.innerHTML += `
-    <section class = "saved-covers-section" id = "${savedCovers[i].id}" ">
+    <section class = "saved-covers-section" id = "${savedCovers[i].id}">
       <section class = "mini-cover">
         <img class="mini-cover" src= ${savedCovers[i].cover} </img>
         <h2 class="cover-title"> ${savedCovers[i].title} </h2>
@@ -159,9 +158,6 @@ function deleteCover(e) {
   for (var i = 0; i < savedCovers.length; i++) {
     var check1 = target.id + ""
     var check2 = savedCovers[i].id + ""
-    console.log(check1)
-    console.log(check2)
-    console.log('_____________')
     if (check1 === check2) {
     savedCovers.splice(i,1)
     }
